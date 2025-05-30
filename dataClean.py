@@ -8,14 +8,20 @@ Created on Thu May 29 19:57:00 2025
 import pandas as pd
 import pyodbc
 
-conn = pyodbc.connect(
-    'DRIVER={SQL Server};'
-    'SERVER=your_server;'
-    'DATABASE=your_database;'
-    'UID=your_username;'
-    'PWD=your_password'
-)
-
+try:
+    
+    conn = pyodbc.connect(
+            'DRIVER={ODBC Driver 18 for SQL Server};'
+            'SERVER=DESKTOP-ANTHONY\SQLEXPRESS01;'
+            'DATABASE=netflix;'
+            'Encrypt=yes;TrustServerCertificate=yes;'
+            'UID=netflixproject;'
+            'PWD=netflixproject'
+    )
+    print("OK")
+except Exception:
+    print('Conexión Fallida')
+    
 init = "netflix_titles.csv"
 
 df = pd.read_csv(init)
